@@ -19,6 +19,7 @@ const Login = () => {
 
     return (
         <div className="app-container">
+        <h2 className="pages-title">¡Inicia Sesión en tu plataforma de recuerdos favorita!</h2>
             <form onSubmit={handleSubmit} className="login-container">
                 <h1>ShareMeSomething!</h1>
                 <input 

@@ -1,8 +1,10 @@
 .app-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
   background-color: #faf1f1;
 }
 
@@ -39,4 +41,102 @@
   color: rgb(255, 255, 255);
   border-radius: 20px;
   padding: 10px;
+}
+
+.guest-navbar {
+  background: #88722c;
+  color: white;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.guest-navbar h2{
+  margin-right: 10px;
+}
+
+.guest-menu-container {
+  flex-grow: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.guest-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.guest-menu li {
+  flex-shrink: 0;
+}
+
+.guest-menu a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+.guest-menu a:hover {
+  color: rgb(233, 214, 128);
+}
+
+.guest-menu li.active a,
+.menu li.active a {
+  color: #000000;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.guest-menu li.active a span,
+.menu li.active a span {
+  color: #000000;
+}
+
+.pages-title{
+  font-size: 20px;
+  background-color: bisque;
+  font-family: cursive;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.info-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+  align-items: center;
+  background-color: rgb(251, 240, 198);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.info-container p {
+  font-size: 18px;
+  text-align: justify;            
+  max-width: 600px;               
+  width: 100%;                    
+  margin: 0 auto;                 
+  line-height: 1.6;               
+}
+
+.info-img{
+  width: 400px;
+  height: 400px;
 }
