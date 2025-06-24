@@ -69,7 +69,15 @@ const api = {
 
   auth: {
     login: (data) => ax.post("api/login/", data),
+    logout: (refresh) => ax.post("api/logout/", {refresh})
   },
+  shares: {
+    get: ({ tipo, usuario_id, fecha } = {}) =>
+      ax.get("api/shares/", {
+      params: { tipo, usuario_id, fecha }
+    })
+}
+
 };
 
 export default api;

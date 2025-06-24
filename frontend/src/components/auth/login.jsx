@@ -1,9 +1,12 @@
 import { useState } from "react";
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+
+const Login = ({setToken}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -12,8 +15,10 @@ const Login = () => {
             const response = await api.auth.login({ username, password });
             localStorage.setItem("access", response.data.access);
             localStorage.setItem("refresh", response.data.refresh);
+            setToken(response.data.refresh);
+            navigate('/recibidos')
         } catch (err) {
-            console.error("Error al iniciar sesión.", err);
+            navigate('/login')
         }
     };
 

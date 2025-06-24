@@ -11,8 +11,8 @@ const GuestNavbar = () =>{
     return (
       <div className="guest-navbar">
         <h2>ShareMeSomething!</h2>
-        <div className="guest-menu-container">
-          <ul className="guest-menu">
+        <div className="menu-container">
+          <ul className="menu">
             {menuItems.map((item, index) => (
               <li key={index} className={location.pathname === item.path ? "active" : ""}>
                 <Link to={item.path}>

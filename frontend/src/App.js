@@ -4,6 +4,8 @@ import Login from './components/auth/login';
 import { useEffect, useState } from 'react';
 import GuestNavbar from './components/layouts/guestNavbar';
 import About from './components/home/about';
+import UserNavbar from './components/layouts/userNavbar';
+import Recibidos from './components/shares/recibidos';
 
 function App() {
 
@@ -23,13 +25,13 @@ function App() {
     {!token ? (
     <>
       <Routes>
-        <Route path="/" element={<div><GuestNavbar /><div className="no-auth-content"><About/></div></div>} />
-        <Route path="/login" element={<div><GuestNavbar /><div className="no-auth-content"><Login/></div></div>} />
+        <Route path="/" element={<div><GuestNavbar /><div><About/></div></div>} />
+        <Route path="/login" element={<div><GuestNavbar /><div><Login setToken={setToken} /></div></div>} />
       </Routes>
     </>
     ) : (
       <Routes>
-        <Route path="/home"/>
+        <Route path="/recibidos" element={<div><UserNavbar setToken={setToken} /><div><Recibidos/></div></div>} />
       </Routes>
     )}
     </Router>
