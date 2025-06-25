@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../api";
 import { useNavigate } from 'react-router-dom';
+import { messageState } from "../utils/utils";
 
 
 const Login = ({setToken}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const [message, setMessage] = useState(null);
+    const [alertType, setAlertType] = useState("SUCCESS");
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,30 +22,44 @@ const Login = ({setToken}) => {
             setToken(response.data.refresh);
             navigate('/recibidos')
         } catch (err) {
-            navigate('/login')
+            setAlertType("ERROR");
+            setMessage(err.response.data.detail);
         }
     };
 
+    useEffect(() => {
+        messageState(message, setMessage)
+    }, [message]);
+
     return (
         <div className="app-container">
+        {message && (
+          <div className={`alert ${alertType === "SUCCESS" ? "success" : "error"}`}>
+            {message}
+          </div>
+        )}
         <h2 className="pages-title">¡Inicia Sesión en tu plataforma de recuerdos favorita!</h2>
             <form onSubmit={handleSubmit} className="login-container">
                 <h1>ShareMeSomething!</h1>
-                <input 
-                    className="form-input"
-                    type="text" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
-                    placeholder="Ingresa tu nombre de usuario"
-                />
-                <input 
-                    className="form-input"
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    placeholder="Ingresa tu contraseña"
-                />
-                <button type="submit" className="submit-button">Iniciar sesión</button>
+                <div className="form-container">
+                    <h2>Nombre de usuario:</h2>
+                    <input 
+                        className="form-input"
+                        type="text" 
+                        value={username} 
+                        onChange={(e) => setUsername(e.target.value)} 
+                        placeholder="Ingresa tu nombre de usuario"
+                    />
+                    <h2>Contraseña:</h2>
+                    <input 
+                        className="form-input"
+                        type="password" 
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        placeholder="Ingresa tu contraseña"
+                    />
+                </div>
+                <button type="submit" className="btn btn-blue">Iniciar sesión</button>
             </form>
         </div>
     );

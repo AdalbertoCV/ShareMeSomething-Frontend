@@ -69,7 +69,8 @@ const api = {
 
   auth: {
     login: (data) => ax.post("api/login/", data),
-    logout: (refresh) => ax.post("api/logout/", {refresh})
+    logout: (refresh) => ax.post("api/logout/", {refresh}),
+    register: (data) => ax.post("api/usuarios/", data)
   },
   shares: {
     get: ({ tipo, usuario_id, fecha } = {}) =>

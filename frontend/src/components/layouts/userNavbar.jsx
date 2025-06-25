@@ -7,8 +7,9 @@ const UserNavbar = ({setToken}) =>{
     const navigate = useNavigate();
     const menuItems = [
       { path: "/recibidos", label: "Shares Recibidos" },
-      { path: "/recibidos", label: "Shares Compartidos" },
-      { path: "/recibidos", label: "Usuarios" },
+      { path: "/compartidos", label: "Shares Compartidos" },
+      { path: "/usuarios", label: "Usuarios" },
+      { path: "/perfil", label: "Mi Perfil" },
     ];
 
     const handleLogout = async () => {

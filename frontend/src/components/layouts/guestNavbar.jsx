@@ -5,6 +5,7 @@ const GuestNavbar = () =>{
     const location = useLocation();
     const menuItems = [
       { path: "/", label: "Acerca de" },
+      { path: "/registrarse", label: "Registrarse" },
       { path: "/login", label: "Iniciar Sesión" },
     ];
 
